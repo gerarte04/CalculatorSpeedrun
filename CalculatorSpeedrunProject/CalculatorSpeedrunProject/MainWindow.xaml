@@ -62,8 +62,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpBackspaceEvent">
                 <TextBlock FontSize="35"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -77,8 +77,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpLeftBracketEvent">
                 <TextBlock FontSize="35"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -92,8 +92,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpRightBracketEvent">
                 <TextBlock FontSize="35"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -107,8 +107,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpOperButtonEvent">
                 <TextBlock FontSize="35"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -123,8 +123,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpNumButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -138,8 +138,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpNumButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -153,8 +153,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpNumButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -168,8 +168,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpOperButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -184,8 +184,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpNumButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -199,8 +199,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpNumButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -214,8 +214,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpNumButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -229,8 +229,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpOperButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -245,8 +245,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpNumButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -260,8 +260,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpNumButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -275,8 +275,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpNumButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -290,8 +290,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpOperButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -306,8 +306,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpNumButtonEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -321,8 +321,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpChangeSignEvent">
                 <TextBlock FontSize="35"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -336,8 +336,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   MouseLeftButtonUp="MouseUpPointEvent">
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"
@@ -351,8 +351,8 @@
                    BorderBrush="#f7983e"
                    BorderThickness="1"
                    HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="ButtonMouseDown"
-                   MouseLeftButtonUp="ButtonMouseUp">
+                   MouseLeftButtonDown="MouseDownButtonEvent"
+                   >
                 <TextBlock FontSize="45"
                            FontFamily="Calibri"
                            Foreground="#d6d4d4"

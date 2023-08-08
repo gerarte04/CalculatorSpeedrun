@@ -22,20 +22,6 @@ namespace CalculatorSpeedrunProject
     {
         string pressedKey = "-";
 
-        Dictionary<string, char> charNumEquvs = new Dictionary<string, char>()
-        {
-            ["Zero"] = '0',
-            ["One"] = '1',
-            ["Two"] = '2',
-            ["Three"] = '3',
-            ["Four"] = '4',
-            ["Five"] = '5',
-            ["Six"] = '6',
-            ["Seven"] = '7',
-            ["Eight"] = '8',
-            ["Nine"] = '9'
-        };
-
         bool pointed = false;
         int openBracketsNum = 0;
 
@@ -44,19 +30,33 @@ namespace CalculatorSpeedrunProject
             InitializeComponent();
         }
 
-        private void AddNumToLabel(char num)
+        private bool MouseUpCheck(object sender)
         {
-            if (numLabel.Text == "0")
+            if(pressedKey == (sender as Border).Name)
             {
-                numLabel.Text = num.ToString();
+                pressedKey = "-";
+                return true;
             }
-            else
+
+            pressedKey = "-";
+            return false;
+        }
+
+        private void MouseDownButtonEvent(object sender, MouseButtonEventArgs e)
+        {
+            if (pressedKey[0] == '-')
             {
-                numLabel.Text += num;
+                pressedKey = (sender as Border).Name;
             }
         }
-        private void AddPointToLabel()
+
+        private void MouseUpPointEvent(object sender, MouseButtonEventArgs e)
         {
+            if (!MouseUpCheck(sender))
+            {
+                return;
+            }
+
             if (!pointed)
             {
                 numLabel.Text += '.';
@@ -64,8 +64,13 @@ namespace CalculatorSpeedrunProject
             }
         }
 
-        private void ChangeSign()
+        private void MouseUpChangeSignEvent(object sender, MouseButtonEventArgs e)
         {
+            if (!MouseUpCheck(sender))
+            {
+                return;
+            }
+
             if (numLabel.Text[0] == '-')
             {
                 numLabel.Text = numLabel.Text.Substring(1);
@@ -76,24 +81,40 @@ namespace CalculatorSpeedrunProject
             }
         }
 
-        private void AddLeftBracket()
+        private void MouseUpLeftBracketEvent(object sender, MouseButtonEventArgs e)
         {
+            if (!MouseUpCheck(sender))
+            {
+                return;
+            }
+
             expLabel.Text += '(';
             openBracketsNum++;
         }
 
-        private void AddRightBracket()
+        private void MouseUpRightBracketEvent(object sender, MouseButtonEventArgs e)
         {
-            if(openBracketsNum > 0)
+            if (!MouseUpCheck(sender))
+            {
+                return;
+            }
+
+            if (openBracketsNum > 0)
             {
                 expLabel.Text += numLabel.Text + ')';
                 numLabel.Text = "0";
                 openBracketsNum--;
+                pointed = false;
             }
         }
 
-        private void BackspaceAction()
+        private void MouseUpBackspaceEvent(object sender, MouseButtonEventArgs e)
         {
+            if (!MouseUpCheck(sender))
+            {
+                return;
+            }
+
             int len = numLabel.Text.Length;
 
             if(len == 1)
@@ -111,56 +132,30 @@ namespace CalculatorSpeedrunProject
             }
         }
 
-        private void ButtonMouseDown(object sender, MouseButtonEventArgs e)
+        private void MouseUpNumButtonEvent(object sender, MouseButtonEventArgs e)
         {
-            if (pressedKey[0] == '-')
+            if (!MouseUpCheck(sender))
             {
-                pressedKey = (sender as Border).Name;
+                return;
             }
-        }
 
-        private void ButtonMouseUp(object sender, MouseButtonEventArgs e)
-        {
             string key = (sender as Border).Name;
+            char num = Constants.charNumEquvs[key.Substring(3).Replace("Button", "")];
 
-            if (pressedKey == key)
+            if (numLabel.Text == "0")
             {
-                pressedKey = "-";
-
-                if (key.StartsWith("num"))
-                {
-                    AddNumToLabel(charNumEquvs[key.Substring(3).Replace("Button", "")]);
-                    return;
-                }
-
-                switch (key)
-                {
-                    case "pointButton":
-                        AddPointToLabel();
-                        return;
-                    case "backspaceButton":
-                        BackspaceAction();
-                        return;
-                    case "changeSignButton":
-                        ChangeSign();
-                        return;
-                    case "leftBracketButton":
-                        AddLeftBracket();
-                        return;
-                    case "rightBracketButton":
-                        AddRightBracket();
-                        return;
-                    default:
-                        break;
-                }
-
-
-
-                expLabel.Text += ((sender as Border).Child as TextBlock).Text;
+                numLabel.Text = num.ToString();
             }
+            else
+            {
+                numLabel.Text += num;
+            }
+        }  
+        
+        private void MouseUpOperButtonEvent(object sender, MouseButtonEventArgs e)
+        {
 
-            pressedKey = "-";
-        }   
+        }
 
         private void KeyUpDelete(object sender, KeyEventArgs e)
         {
