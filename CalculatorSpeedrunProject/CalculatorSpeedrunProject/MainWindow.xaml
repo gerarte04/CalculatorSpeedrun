@@ -12,6 +12,39 @@
         BorderBrush="#000000"
         KeyUp="KeyUpDelete">
 
+    <Window.Resources>
+        <Style x:Key="buttonStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
+            <Setter Property="Background" Value="#424242"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Calibri"></Setter>
+            <Setter Property="FontSize" Value="40"></Setter>
+            <Setter Property="Width" Value="68"></Setter>
+            <Setter Property="Height" Value="55"></Setter>
+            <Setter Property="Padding" Value="0,0,0,0"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="1"
+                            BorderBrush="Black" 
+                            CornerRadius="5" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#f7983e"/>
+                                <Setter TargetName="border" Property="Background" Value="#505050"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <TextBlock
                 Grid.Row="0" FontSize="15"
@@ -28,7 +61,7 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -56,310 +89,70 @@
                     VerticalAlignment="Top"
                     Margin="0,-58,11,0">0</TextBlock>
 
-            <Border x:Name="backspaceButton"
-                   Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpBackspaceEvent">
-                <TextBlock FontSize="35"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">←</TextBlock>
-            </Border>
-            <Border x:Name="leftBracketButton" 
-                   Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpLeftBracketEvent">
-                <TextBlock FontSize="35"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">(</TextBlock>
-            </Border>
-            <Border x:Name="rightBracketButton" 
-                   Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpRightBracketEvent">
-                <TextBlock FontSize="35"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">)</TextBlock>
-            </Border>
-            <Border x:Name="divButton" 
-                   Grid.Row="0" Grid.Column="3" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpOperButtonEvent">
-                <TextBlock FontSize="35"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">/</TextBlock>
-            </Border>
+            <Button Style="{StaticResource buttonStyle}" x:Name="backspaceButton"
+                    FontSize="37" Grid.Row="0" Grid.Column="0"
+                    Click="ClickBackspaceEvent">←</Button>
+            <Button Style="{StaticResource buttonStyle}"
+                    FontSize="37" Grid.Row="0" Grid.Column="1" x:Name="leftBracketButton"
+                    Click="ClickLeftBracketEvent">(</Button>
+            <Button Style="{StaticResource buttonStyle}"
+                    FontSize="37" Grid.Row="0" Grid.Column="2" x:Name="rightBracketButton"
+                    Click="ClickRightBracketEvent">)</Button>
+            <Button Style="{StaticResource buttonStyle}"
+                    FontSize="35" Grid.Row="0" Grid.Column="3" x:Name="divButton"
+                    Click="ClickOperationEvent">/</Button>
 
-            <Border x:Name="numSevenButton" 
-                   Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpNumButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">7</TextBlock>
-            </Border>
-            <Border x:Name="numEightButton" 
-                   Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpNumButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">8</TextBlock>
-            </Border>
-            <Border x:Name="numNineButton" 
-                   Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpNumButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">9</TextBlock>
-            </Border>
-            <Border x:Name="multButton"  
-                   Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpOperButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,20,0,0">*</TextBlock>
-            </Border>
+            <Button Style="{StaticResource buttonStyle}" x:Name="sevenButton"
+                    Grid.Row="1" Grid.Column="0"
+                    Click="ClickNumberEvent">7</Button>
+            <Button Style="{StaticResource buttonStyle}" x:Name="eightButton"
+                    Grid.Row="1" Grid.Column="1"
+                    Click="ClickNumberEvent">8</Button>
+            <Button Style="{StaticResource buttonStyle}" x:Name="nineButton"
+                    Grid.Row="1" Grid.Column="2"
+                    Click="ClickNumberEvent">9</Button>
+            <Button Style="{StaticResource buttonStyle}" x:Name="multButton"
+                    Padding="0,10" Grid.Row="1" Grid.Column="3"
+                    Click="ClickOperationEvent">*</Button>
 
-            <Border x:Name="numFourButton"  
-                   Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpNumButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">4</TextBlock>
-            </Border>
-            <Border x:Name="numFiveButton" 
-                   Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpNumButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">5</TextBlock>
-            </Border>
-            <Border x:Name="numSixButton"  
-                   Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpNumButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">6</TextBlock>
-            </Border>
-            <Border x:Name="subButton" 
-                   Grid.Row="2" Grid.Column="3" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpOperButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">-</TextBlock>
-            </Border>
+            <Button Style="{StaticResource buttonStyle}" x:Name="fourButton"
+                    Grid.Row="2" Grid.Column="0"
+                    Click="ClickNumberEvent">4</Button>
+            <Button Style="{StaticResource buttonStyle}" x:Name="fiveButton"
+                    Grid.Row="2" Grid.Column="1"
+                    Click="ClickNumberEvent">5</Button>
+            <Button Style="{StaticResource buttonStyle}" x:Name="sixButton"
+                    Grid.Row="2" Grid.Column="2"
+                    Click="ClickNumberEvent">6</Button>
+            <Button Style="{StaticResource buttonStyle}" x:Name="subButton"
+                    Grid.Row="2" Grid.Column="3"
+                    Click="ClickOperationEvent">–</Button>
 
-            <Border x:Name="numOneButton"  
-                   Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpNumButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">1</TextBlock>
-            </Border>
-            <Border x:Name="numTwoButton"  
-                   Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpNumButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">2</TextBlock>
-            </Border>
-            <Border x:Name="numThreeButton" 
-                   Grid.Row="3" Grid.Column="2" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpNumButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">3</TextBlock>
-            </Border>
-            <Border x:Name="addButton" 
-                   Grid.Row="3" Grid.Column="3" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpOperButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">+</TextBlock>
-            </Border>
+            <Button Style="{StaticResource buttonStyle}" x:Name="oneButton"
+                    Grid.Row="3" Grid.Column="0"
+                    Click="ClickNumberEvent">1</Button>
+            <Button Style="{StaticResource buttonStyle}" x:Name="twoButton"
+                    Grid.Row="3" Grid.Column="1"
+                    Click="ClickNumberEvent">2</Button>
+            <Button Style="{StaticResource buttonStyle}" x:Name="threeButton"
+                    Grid.Row="3" Grid.Column="2"
+                    Click="ClickNumberEvent">3</Button>
+            <Button Style="{StaticResource buttonStyle}" x:Name="addButton"
+                    Grid.Row="3" Grid.Column="3"
+                    Click="ClickOperationEvent">+</Button>
 
-            <Border x:Name="numZeroButton"  
-                   Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpNumButtonEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">0</TextBlock>
-            </Border>
-            <Border x:Name="changeSignButton"  
-                   Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpChangeSignEvent">
-                <TextBlock FontSize="35"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">+/-</TextBlock>
-            </Border>
-            <Border x:Name="pointButton" 
-                   Grid.Row="4" Grid.Column="2" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   MouseLeftButtonUp="MouseUpPointEvent">
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,20">.</TextBlock>
-            </Border>
-            <Border x:Name="enterButton" 
-                   Grid.Row="4" Grid.Column="3" VerticalAlignment="Center"
-                   Background="#424242"
-                   BorderBrush="#f7983e"
-                   BorderThickness="1"
-                   HorizontalAlignment="Center" Width="71" Height="58"
-                   MouseLeftButtonDown="MouseDownButtonEvent"
-                   >
-                <TextBlock FontSize="45"
-                           FontFamily="Calibri"
-                           Foreground="#d6d4d4"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0,0,0">=</TextBlock>
-            </Border>
+            <Button Style="{StaticResource buttonStyle}" x:Name="zeroButton"
+                    Grid.Row="4" Grid.Column="0"
+                    Click="ClickNumberEvent">0</Button>
+            <Button Style="{StaticResource buttonStyle}" x:Name="changeSignButton"
+                    FontSize="33" Grid.Row="4" Grid.Column="1"
+                    Click="ClickChangeSignEvent">+/–</Button>
+            <Button Style="{StaticResource buttonStyle}" x:Name="pointButton"
+                    Grid.Row="4" Grid.Column="2"
+                    Click="ClickPointEvent">.</Button>
+            <Button Style="{StaticResource buttonStyle}" x:Name="enterButton"
+                    Grid.Row="4" Grid.Column="3"
+                    >=</Button>
         </Grid>
 
     </Grid>

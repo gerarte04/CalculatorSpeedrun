@@ -20,8 +20,6 @@ namespace CalculatorSpeedrunProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        string pressedKey = "-";
-
         bool pointed = false;
         int openBracketsNum = 0;
 
@@ -30,33 +28,8 @@ namespace CalculatorSpeedrunProject
             InitializeComponent();
         }
 
-        private bool MouseUpCheck(object sender)
+        private void ClickPointEvent(object sender, RoutedEventArgs e)
         {
-            if(pressedKey == (sender as Border).Name)
-            {
-                pressedKey = "-";
-                return true;
-            }
-
-            pressedKey = "-";
-            return false;
-        }
-
-        private void MouseDownButtonEvent(object sender, MouseButtonEventArgs e)
-        {
-            if (pressedKey[0] == '-')
-            {
-                pressedKey = (sender as Border).Name;
-            }
-        }
-
-        private void MouseUpPointEvent(object sender, MouseButtonEventArgs e)
-        {
-            if (!MouseUpCheck(sender))
-            {
-                return;
-            }
-
             if (!pointed)
             {
                 numLabel.Text += '.';
@@ -64,13 +37,8 @@ namespace CalculatorSpeedrunProject
             }
         }
 
-        private void MouseUpChangeSignEvent(object sender, MouseButtonEventArgs e)
+        private void ClickChangeSignEvent(object sender, RoutedEventArgs e)
         {
-            if (!MouseUpCheck(sender))
-            {
-                return;
-            }
-
             if (numLabel.Text[0] == '-')
             {
                 numLabel.Text = numLabel.Text.Substring(1);
@@ -81,24 +49,14 @@ namespace CalculatorSpeedrunProject
             }
         }
 
-        private void MouseUpLeftBracketEvent(object sender, MouseButtonEventArgs e)
+        private void ClickLeftBracketEvent(object sender, RoutedEventArgs e)
         {
-            if (!MouseUpCheck(sender))
-            {
-                return;
-            }
-
             expLabel.Text += '(';
             openBracketsNum++;
         }
 
-        private void MouseUpRightBracketEvent(object sender, MouseButtonEventArgs e)
+        private void ClickRightBracketEvent(object sender, RoutedEventArgs e)
         {
-            if (!MouseUpCheck(sender))
-            {
-                return;
-            }
-
             if (openBracketsNum > 0)
             {
                 expLabel.Text += numLabel.Text + ')';
@@ -108,16 +66,11 @@ namespace CalculatorSpeedrunProject
             }
         }
 
-        private void MouseUpBackspaceEvent(object sender, MouseButtonEventArgs e)
+        private void ClickBackspaceEvent(object sender, RoutedEventArgs e)
         {
-            if (!MouseUpCheck(sender))
-            {
-                return;
-            }
-
             int len = numLabel.Text.Length;
 
-            if(len == 1)
+            if(len == 1 || (len == 2 && numLabel.Text[0] == '-'))
             {
                 numLabel.Text = "0";
             }
@@ -132,15 +85,10 @@ namespace CalculatorSpeedrunProject
             }
         }
 
-        private void MouseUpNumButtonEvent(object sender, MouseButtonEventArgs e)
+        private void ClickNumberEvent(object sender, RoutedEventArgs e)
         {
-            if (!MouseUpCheck(sender))
-            {
-                return;
-            }
-
-            string key = (sender as Border).Name;
-            char num = Constants.charNumEquvs[key.Substring(3).Replace("Button", "")];
+            string key = (sender as Button).Name;
+            char num = Constants.charNumEquvs[key.Replace("Button", "")];
 
             if (numLabel.Text == "0")
             {
@@ -152,7 +100,7 @@ namespace CalculatorSpeedrunProject
             }
         }  
         
-        private void MouseUpOperButtonEvent(object sender, MouseButtonEventArgs e)
+        private void ClickOperationEvent(object sender, RoutedEventArgs e)
         {
 
         }
