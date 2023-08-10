@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace CalculatorSpeedrunProject
 {
-    public class CalculationManager
+    public abstract class Exp
     {
-
-        public CalculationManager() { }
-
+        public abstract double Calculate();
     }
 }

@@ -82,12 +82,12 @@
 
             <TextBlock x:Name="numLabel"
                     Grid.Column="0" Grid.ColumnSpan="4"
-                    FontSize="35"
+                    FontSize="40"
                     FontFamily="Calibri"
                     Foreground="#d6d4d4"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
-                    Margin="0,-58,11,0">0</TextBlock>
+                    Margin="0,-60,11,0">0</TextBlock>
 
             <Button Style="{StaticResource buttonStyle}" x:Name="backspaceButton"
                     FontSize="37" Grid.Row="0" Grid.Column="0"
@@ -111,7 +111,7 @@
             <Button Style="{StaticResource buttonStyle}" x:Name="nineButton"
                     Grid.Row="1" Grid.Column="2"
                     Click="ClickNumberEvent">9</Button>
-            <Button Style="{StaticResource buttonStyle}" x:Name="multButton"
+            <Button Style="{StaticResource buttonStyle}" x:Name="mulButton"
                     Padding="0,10" Grid.Row="1" Grid.Column="3"
                     Click="ClickOperationEvent">*</Button>
 
@@ -152,7 +152,7 @@
                     Click="ClickPointEvent">.</Button>
             <Button Style="{StaticResource buttonStyle}" x:Name="enterButton"
                     Grid.Row="4" Grid.Column="3"
-                    >=</Button>
+                    Click="ClickEnterEvent">=</Button>
         </Grid>
 
     </Grid>
